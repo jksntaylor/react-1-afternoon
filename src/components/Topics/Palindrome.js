@@ -5,8 +5,8 @@ class Palindrome extends Component {
     constructor () {
         super()
         this.state = {
-            userInput='',
-            palindrome=''
+            userInput: '',
+            palindrome: ''
         }
     }
 
@@ -15,13 +15,18 @@ class Palindrome extends Component {
     }
 
     palindromeCheck (prop) {
-        var palindrome = this.state.palindrome;
-        var propArr = prop.split(',');
-        for (let i=0, i<propArr;i++) {
-            
+        var propArr = prop;
+        var popped = prop;
+        popped = popped.split('');
+        popped = popped.reverse();
+        popped = popped.join('');
+        if (popped===propArr) {
+            {this.setState({palindrome: 'Yes, ' +prop+ ' is a palindrome'})}
+        } else {
+            {this.setState({palindrome: 'No, ' +prop+ ' is not a palindrome'})}
         }
     }
-    render () {
+    render () {     
         return (
             <div className='puzzleBox filterStringPB'>
                 <h4>Palindrome</h4>
