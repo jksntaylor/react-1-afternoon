@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class FilterString extends Component {
 
@@ -7,21 +7,22 @@ class FilterString extends Component {
 
         this.state = {
             unfilteredArray: ['James', 'Jessica', 'Melody', 'Tyler', 'Blake', 'Jennifer', 'Mark', 'Maddy'],
-            userInput: '',
-            filteredArray: []
+            filteredArray: [],
+            userInput: ''
         }
     }
 
-    handleClick (value) {
+    handleClick(value) {
         {this.setState({userInput: value})}
     }
 
+
     filterString (prop) {
-        let unfiltered = this.state.unfilteredArray;
-        let filtered = [];
-        for (let i=0; i<unfiltered.length;i++) {
+        var unfiltered = this.state.unfilteredArray;
+        var filtered = [];
+        for (let i=0;i<unfiltered.length;i++) {
             if (unfiltered[i].includes(prop)) {
-                filtered.push(unfiltered[i])
+                filtered.push(unfiltered[i]);
             }
         }
         {this.setState({filteredArray: filtered})}
@@ -32,10 +33,10 @@ class FilterString extends Component {
         return (
             <div className='puzzleBox filterStringPB'>
                 <h4>Filter String</h4>
-                <span className='puzzleText'>Original: {JSON.stringify(this.state.unfilteredArray,null,10)}</span>
+                <span className='puzzleText'>Strings: {JSON.stringify(this.state.unfilteredArray)}</span>
                 <input className='inputLine' onChange={element => this.handleClick(element.target.value)}></input>
-                <button className='confirmationButton' onClick={() => {this.filterString(this.state.userInput)}}>Filter</button>
-                <span className='resultsBox filterStringRB'>Filtered: {JSON.stringify(this.state.filteredArray,null,10)}</span>
+                <button className='confirmationButton' onClick={() => this.filterString(this.state.userInput)}>Filter</button>
+                <span className='resultsBox filterStringRB'>Filtered Strings: {JSON.stringify(this.state.filteredArray)}</span>
             </div>
         )
     }
